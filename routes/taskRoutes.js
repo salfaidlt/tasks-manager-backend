@@ -24,4 +24,10 @@ router.put("/:id", verifyToken, async(req, res) => {
   res.json(updatedTask);
 });
 
+router.delete("/:id", verifyToken, async(req, res) => {
+  const { id } = req.params;
+  await Task.findByIdAndDelete(id);
+  res.status(200).json({ message: "task " + id + " deleted" })
+});
+
 module.exports = router;
