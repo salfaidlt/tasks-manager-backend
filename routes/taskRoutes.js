@@ -5,8 +5,9 @@ const router = express.Router();
 const verifyToken = require("../middlewares/authMiddleware")
 
 router.get("/", verifyToken,async (req, res) => {
-  const tasks = await Task.find({ userId: decoded.id });
-  res.json(tasks);
+  const userId = req.userId;
+  const tasks = await Task.find({ userId: userId });
+  res.status(200).json(tasks);
 });
 
 router.post("/add", verifyToken, async(req, res) => {
