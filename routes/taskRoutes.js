@@ -15,6 +15,13 @@ router.post("/add", verifyToken, async(req, res) => {
   const task = new Task({ userId, title, description, dueDate, status })
   await task.save()
   res.status(201).json({ message: "Task created" })
-})
+});
+
+router.put("/:id", verifyToken, async(req, res) => {
+  const { id } = req.params;
+  const updates = req.body
+  const updatedTask = await Task.findByIdAndUpdate(id, updates, { new: true });
+  res.json(updatedTask);
+});
 
 module.exports = router;
