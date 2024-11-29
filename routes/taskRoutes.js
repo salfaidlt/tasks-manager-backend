@@ -10,6 +10,10 @@ router.get("/", verifyToken,async (req, res) => {
   res.status(200).json(tasks);
 });
 
+router.get('/add', (req, res) => {
+  res.status(200).json({ route: "/api/tasks/add/" })
+})
+
 router.post("/add", verifyToken, async(req, res) => {
   const { userId, title, description, dueDate, status } = req.body
   const task = new Task({ userId, title, description, dueDate, status })

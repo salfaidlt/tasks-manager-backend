@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
     res.send("hello")
 })
 app.use("/api/users", userRoutes);
-app.use("/api/tasks", taskRoutes);
+app.use("/api/tasks", taskRoutes);3
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
