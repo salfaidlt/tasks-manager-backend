@@ -15,10 +15,10 @@ router.get('/add', (req, res) => {
 })
 
 router.post("/add", verifyToken, async(req, res) => {
-  const { userId, title, description, dueDate, status } = req.body
-  const task = new Task({ userId, title, description, dueDate, status })
-  await task.save()
-  res.status(201).json({ message: "Task created" })
+  const { userId, title, description, dueDate, status } = req.body;
+  const task = new Task({ userId, title, description, dueDate, status });
+  await task.save();
+  res.status(201).json({ message: "Task created" });
 });
 
 router.put("/:id", verifyToken, async(req, res) => {
